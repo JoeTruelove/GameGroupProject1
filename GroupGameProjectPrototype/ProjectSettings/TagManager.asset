@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - Death
   - Portal
+  - LeftWall
+  - RightWall
   layers:
   - Default
   - TransparentFX
