@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
 
         //Jumping code
-        if ((Input.GetKeyDown(KeyCode.Space) && (isGrounded || (timesJumped < 2 && onWall))) && startMoving)
+        if ((Input.GetKeyDown(KeyCode.Space) && (isGrounded || (timesJumped < 2 && onWall)) && startMoving))
         {
             //transform.Translate(Vector3.up * jumpHeight);
             //rigidBody.AddForce(transform.TransformDirection(Vector3.up) * 5);

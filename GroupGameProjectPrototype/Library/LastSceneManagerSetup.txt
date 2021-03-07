@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/lvl 2 prototype.unity
+- path: Assets/Scenes/Menu.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
