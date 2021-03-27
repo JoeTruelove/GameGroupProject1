@@ -158,6 +158,8 @@ public class NewFPPlayerMove : MonoBehaviour
 
     public int currentLevel = 0;
     public Canvas gameOverUI;
+    public AudioSource aSource;
+    public static AudioClip jumpSound;
 
     void Awake()
     {
@@ -171,6 +173,10 @@ public class NewFPPlayerMove : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         changeLevel(currentLevel);
+        aSource = GetComponent<AudioSource>();
+        if (aSource == null) aSource = gameObject.AddComponent<AudioSource>();
+        jumpSound = Resources.Load<AudioClip>("jsound");
+
     }
 
 
@@ -208,6 +214,11 @@ public class NewFPPlayerMove : MonoBehaviour
             WallRunInput();
         }
         
+        if(this.y == -15)
+        {
+            changeLevel(currentLevel);
+        }
+
         //Look();
         CheckForWall();
         SonicSpeed();
@@ -264,6 +275,7 @@ public class NewFPPlayerMove : MonoBehaviour
             camera.transform.position = new Vector3(0, 0.666f, 1);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
     public void GameOver()
@@ -343,6 +355,7 @@ public class NewFPPlayerMove : MonoBehaviour
             playerBody.GetComponent<Animator>().SetBool("Jumping", true);
             doubleJumpsLeft--;
             timesJumped++;
+            aSource.PlayOneShot(jumpSound);
         }
 
         //Dashing
